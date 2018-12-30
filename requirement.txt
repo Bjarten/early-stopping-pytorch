@@ -1,0 +1,47 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: osx-64
+blas=1.0=mkl
+ca-certificates=2018.11.29=ha4d7672_0
+certifi=2018.11.29=py37_1000
+cffi=1.11.5=py37h6174b99_1
+cycler=0.10.0=py_1
+freetype=2.9.1=h6debe1e_4
+intel-openmp=2019.1=144
+jpeg=9b=he5867d9_2
+kiwisolver=1.0.1=py37h2d50403_2
+libcxx=4.0.1=hcfea43d_1
+libcxxabi=4.0.1=hcfea43d_1
+libedit=3.1.20170329=hb402a30_2
+libffi=3.2.1=h475c297_4
+libgfortran=3.0.1=h93005f0_2
+libpng=1.6.36=ha92aebf_0
+libtiff=4.0.9=hcb84e12_2
+matplotlib=3.0.2=py37_1
+matplotlib-base=3.0.2=py37hb2d221d_1
+mkl=2019.1=144
+mkl_fft=1.0.6=py37h27c97d8_0
+mkl_random=1.0.2=py37h27c97d8_0
+ncurses=6.1=h0a44026_1
+ninja=1.8.2=py37h04f5b5a_1
+numpy=1.15.4=py37hacdab7b_0
+numpy-base=1.15.4=py37h6575580_0
+olefile=0.46=py37_0
+openssl=1.1.1a=h1de35cc_0
+pillow=5.3.0=py37hb68e598_0
+pip=18.1=py37_0
+pycparser=2.19=py37_0
+pyparsing=2.3.0=py_0
+python=3.7.1=haf84260_7
+python-dateutil=2.7.5=py_0
+pytorch=1.0.0=py3.7_1
+readline=7.0=h1de35cc_5
+setuptools=40.6.3=py37_0
+six=1.12.0=py37_1000
+sqlite=3.26.0=ha441bb4_0
+tk=8.6.8=ha441bb4_0
+torchvision=0.2.1=py_2
+tornado=5.1.1=py37h470a237_0
+wheel=0.32.3=py37_0
+xz=5.2.4=h1de35cc_4
+zlib=1.2.11=h1de35cc_3
