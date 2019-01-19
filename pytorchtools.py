@@ -2,7 +2,7 @@ import numpy as np
 import torch
 
 class EarlyStopping:
-    """Early stops the training if validation loss dosen't improve after a given patience."""
+    """Early stops the training if validation loss doesn't improve after a given patience."""
     def __init__(self, patience=7, verbose=False):
         """
         Args:
@@ -24,6 +24,7 @@ class EarlyStopping:
 
         if self.best_score is None:
             self.best_score = score
+            self.save_checkpoint(val_loss, model)
         elif score < self.best_score:
             self.counter += 1
             print(f'EarlyStopping counter: {self.counter} out of {self.patience}')
