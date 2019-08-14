@@ -25,7 +25,7 @@ class EarlyStopping:
 
         if self.mode == 'min':
             self.criterion = np.less
-            self.delta *= delta
+            self.delta = - delta
             self.best_score = np.Inf
 
             self.vocab = {'score': 'loss', 'comportement': 'decreased'}
@@ -53,7 +53,7 @@ class EarlyStopping:
             self.best_score = score
             self.save_checkpoint(score, model)
 
-        elif self.criterion(score, self.best_score + delta):
+        elif self.criterion(score, self.best_score + self.delta):
 
             self.best_score = score
             self.save_checkpoint(score, model)
