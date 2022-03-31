@@ -26,6 +26,7 @@ class EarlyStopping:
         self.delta = delta
         self.path = path
         self.trace_func = trace_func
+
     def __call__(self, val_loss, model):
 
         score = -val_loss
@@ -47,5 +48,10 @@ class EarlyStopping:
         '''Saves model when validation loss decrease.'''
         if self.verbose:
             self.trace_func(f'Validation loss decreased ({self.val_loss_min:.6f} --> {val_loss:.6f}).  Saving model ...')
-        torch.save(model.state_dict(), self.path)
+        
+        if isinstance(model, torch.nn.DataParallel):
+            torch.save(model.module.state_dict(), self.path)
+        else:
+            torch.save(model.state_dict(), self.path)
+        
         self.val_loss_min = val_loss
