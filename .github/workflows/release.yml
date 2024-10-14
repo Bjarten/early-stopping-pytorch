@@ -1,0 +1,50 @@
+name: Create New Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: |
+          Perform a dry run release (check for testing, uncheck for real release)
+          - Checked (true): Simulates the release process without making changes
+          - Unchecked (false): Creates an actual release with version bump
+          Note: Ensure all desired changes are merged to main before releasing
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'  # Specifying the latest stable Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install python-semantic-release==9.11.0  # Locking to a specific version
+
+    - name: Configure Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Run semantic-release
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        semantic-release publish ${{ github.event.inputs.dry-run == true && '--dry-run' || '' }}

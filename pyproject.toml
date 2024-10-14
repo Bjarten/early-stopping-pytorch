@@ -1,0 +1,7 @@
+[tool.semantic_release]
+version_variable = [
+    "pytorchtools.py:__version__",
+]
+branch = "main"
+upload_to_pypi = false
+build_command = "pip install build && python -m build"
