@@ -1,11 +1,10 @@
-# test_early_stopping.py
+# tests/test_early_stopping.py
 
 import pytest
 from unittest.mock import Mock, patch
 import torch
 import numpy as np
-
-from pytorchtools import EarlyStopping
+from early_stopping_pytorch import EarlyStopping
 
 # Fixtures to mock model and temporary checkpoint path
 
@@ -68,7 +67,7 @@ def test_initial_call_saves_checkpoint(mock_model, temp_checkpoint_path):
         temp_checkpoint_path (str): Temporary file path for saving the checkpoint.
     """
     # Patch the torch.save method used inside EarlyStopping to prevent actual file I/O
-    with patch('pytorchtools.torch.save') as mock_save:
+    with patch('early_stopping_pytorch.early_stopping.torch.save') as mock_save:
         # Initialize EarlyStopping with specified parameters
         early_stopping = EarlyStopping(patience=5, verbose=False, path=temp_checkpoint_path)
 
@@ -81,7 +80,7 @@ def test_initial_call_saves_checkpoint(mock_model, temp_checkpoint_path):
         # Assert that torch.save was called once with correct arguments
         mock_save.assert_called_once_with(mock_model.state_dict(), temp_checkpoint_path)
         # Assert that best_val_loss was set correctly
-        assert early_stopping.best_val_loss == initial_val_loss, "Best score should be set to negative initial_val_loss"
+        assert early_stopping.best_val_loss == initial_val_loss, "Best score should be set to initial_val_loss"
         # Assert that early_stop is not triggered
         assert not early_stopping.early_stop, "Early stop should not be triggered on initial call"
 
@@ -98,7 +97,7 @@ def test_validation_loss_improves(mock_model, temp_checkpoint_path):
         temp_checkpoint_path (str): Temporary file path for saving the checkpoint.
     """
     # Patch the torch.save method used inside EarlyStopping
-    with patch('pytorchtools.torch.save') as mock_save:
+    with patch('early_stopping_pytorch.early_stopping.torch.save') as mock_save:
         # Initialize EarlyStopping with specified parameters
         early_stopping = EarlyStopping(patience=5, verbose=False, path=temp_checkpoint_path)
 
@@ -143,11 +142,11 @@ def test_validation_loss_no_improvement_within_delta(mock_model, temp_checkpoint
 
         # After processing initial_losses:
         # - Checkpoints should be saved on initial call and on each improvement (Epochs 1, 2, 3, 5)
-        # - Total save_checkpoint calls: 2
+        # - Total save_checkpoint calls: 3
         # - Patience counter should have incremented to 1 (from Epoch 6)
         # - Early stopping should not have been triggered yet
 
-        # Assert that save_checkpoint was called three times: initial call and three improvements
+        # Assert that save_checkpoint was called three times: initial call and two improvements
         assert mock_save_checkpoint.call_count == 3, "Checkpoints should be saved on initial and three improvements"
 
         # Assert that the patience counter has incremented to 1 (only Epoch 6 incremented it)
@@ -174,7 +173,6 @@ def test_validation_loss_no_improvement_within_delta(mock_model, temp_checkpoint
 
         # Assert that early stopping was triggered after patience was exceeded
         assert early_stopping.early_stop is True, "Early stop should be triggered after patience is exceeded"
-
 
 def test_early_stopping_triggered(mock_model, temp_checkpoint_path):
     """
@@ -230,7 +228,7 @@ def test_verbose_output(mock_model, temp_checkpoint_path, capsys):
         capsys: Pytest fixture to capture output to stdout and stderr.
     """
     # Patch the torch.save method used inside EarlyStopping to prevent actual file I/O
-    with patch('pytorchtools.torch.save'):
+    with patch('early_stopping_pytorch.early_stopping.torch.save'):
         # Initialize EarlyStopping with verbose enabled
         early_stopping = EarlyStopping(patience=2, verbose=True, path=temp_checkpoint_path)
 
@@ -247,7 +245,6 @@ def test_verbose_output(mock_model, temp_checkpoint_path, capsys):
         assert 'EarlyStopping counter: 1 out of 2' in captured.out, "Should print first counter increment"
         assert 'EarlyStopping counter: 2 out of 2' in captured.out, "Should print second counter increment"
 
-
 def test_no_early_stop_when_validation_improves_within_patience(mock_model, temp_checkpoint_path):
     """
     Test that early stopping is not triggered when validation loss continues to improve within patience.
@@ -260,7 +257,7 @@ def test_no_early_stop_when_validation_improves_within_patience(mock_model, temp
         temp_checkpoint_path (str): Temporary file path for saving the checkpoint.
     """
     # Patch the torch.save method used inside EarlyStopping
-    with patch('pytorchtools.torch.save') as mock_save:
+    with patch('early_stopping_pytorch.early_stopping.torch.save') as mock_save:
         # Initialize EarlyStopping with specified parameters
         early_stopping = EarlyStopping(patience=3, verbose=False, path=temp_checkpoint_path)
 
