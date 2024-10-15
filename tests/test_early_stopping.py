@@ -330,4 +330,31 @@ def test_delta_functionality(mock_model, temp_checkpoint_path):
         # Assert no new checkpoints were saved after early stopping was triggered
         assert mock_save_checkpoint.call_count == 2, "No additional checkpoints should be saved after early stopping was triggered"
 
+def test_validation_loss_nan(mock_model, temp_checkpoint_path):
+    """
+    Test that EarlyStopping ignores epochs where validation loss is NaN.
 
+    This test ensures that when a validation loss is NaN, EarlyStopping does not update the model
+    checkpoint, does not reset the patience counter, and ignores the NaN epoch.
+    """
+    # Patch the save_checkpoint method used inside EarlyStopping
+    with patch.object(EarlyStopping, 'save_checkpoint') as mock_save_checkpoint:
+        # Initialize EarlyStopping with specified parameters
+        early_stopping = EarlyStopping(patience=3, verbose=False, path=temp_checkpoint_path)
+
+        # Simulate validation losses, including NaN
+        losses = [1.0, 0.95, float('nan'), 0.9]
+        for loss in losses:
+            early_stopping(loss, mock_model)
+
+        # Assert that save_checkpoint was called three times:
+        # - Initial call (loss=1.0)
+        # - Improvement (loss=0.95)
+        # - Improvement (loss=0.9)
+        assert mock_save_checkpoint.call_count == 3, "Checkpoints should be saved on initial and each significant improvement, ignoring NaN"
+
+        # Assert that early stopping is not triggered
+        assert not early_stopping.early_stop, "Early stop should not be triggered when validations improve"
+
+        # Assert that the patience counter was not incremented for NaN loss
+        assert early_stopping.counter == 0, "Counter should remain 0 since NaN loss was ignored"
