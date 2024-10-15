@@ -220,10 +220,10 @@ def test_early_stopping_triggered(mock_model, temp_checkpoint_path):
 def test_verbose_output(mock_model, temp_checkpoint_path, capsys):
     """
     Test that verbose outputs are printed correctly when verbose is enabled.
-    
+
     This test checks that when the verbose parameter is set to True, EarlyStopping prints
     informative messages about validation loss improvements and patience counter increments.
-    
+
     Args:
         mock_model (Mock): A mocked PyTorch model.
         temp_checkpoint_path (str): Temporary file path for saving the checkpoint.
