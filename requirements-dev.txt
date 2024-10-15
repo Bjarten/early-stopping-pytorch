@@ -2,5 +2,3 @@
 -r requirements.txt
 pytest
 pytest-mock
-coverage
-flake8
