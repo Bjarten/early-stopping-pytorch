@@ -7,10 +7,57 @@ Underneath is a plot from the example notebook, which shows the last checkpoint 
 
 ## Usage
 
-You can run this project directly in the browser by clicking this button: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Bjarten/early-stopping-pytorch/master), or you can clone the project to your computer and install the required pip packages specified in the requirements text file.
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your_username/early-stopping-pytorch.git
+cd early-stopping-pytorch
 ```
-pip install -r requirements.txt
+
+### 2. Set Up the Virtual Environment
+Run the setup script to create a virtual environment and install all necessary dependencies.
+```bash
+./setup_dev_env.sh
 ```
+
+### 3. Activate the Virtual Environment
+Activate the virtual environment:
+```bash
+source dev-venv/bin/activate
+```
+
+### 4. Install the Package in Editable Mode
+Install the package locally in editable mode so you can use it immediately:
+```bash
+pip install -e .
+```
+
+### 5. Use the Package
+You can now import and use the package in your Python code:
+```python
+from early_stopping_pytorch import EarlyStopping
+```
+
+---
+
+### Summary of Commands
+
+1. Clone the repository:
+   `git clone https://github.com/your_username/early-stopping-pytorch.git`
+
+2. Set up the environment:
+   `./setup_dev_env.sh`
+
+3. Activate the environment:
+   `source dev-venv/bin/activate`
+
+4. Install the package in editable mode:
+   `pip install -e .`
+
+5. Optional: Build the package for distribution:
+   `./build.sh`
+```
+
+You can just copy and paste this into your `README.md`. Let me know if you need any more adjustments!
 
 ## References
 The ```EarlyStopping``` class in ```pytorchtool.py``` is inspired by the [ignite EarlyStopping class](https://github.com/pytorch/ignite/blob/master/ignite/handlers/early_stopping.py).
