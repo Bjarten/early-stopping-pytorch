@@ -1,6 +1,4 @@
-# pytorchtools.py
-__version__ = "0.1.0"
-
+# early_stopping.py
 import numpy as np
 import torch
 
