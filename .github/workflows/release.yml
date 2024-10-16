@@ -21,6 +21,7 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+      actions: write
 
     steps:
       - name: Checkout code
@@ -31,7 +32,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12' 
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
@@ -48,7 +49,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ "${{ github.event.inputs.dry-run }}" = "true" ]; then
-            semantic-release publish --dry-run
+            semantic-release publish --dry-run --verbose
           else
-            semantic-release publish
+            semantic-release publish --verbose
           fi
