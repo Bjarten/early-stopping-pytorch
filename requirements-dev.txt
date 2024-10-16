@@ -2,3 +2,5 @@
 -r requirements.txt
 pytest
 pytest-mock
+build
+notebook
