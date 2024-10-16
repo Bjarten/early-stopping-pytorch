@@ -4,7 +4,7 @@
 set -e
 
 # Create a virtual environment if it doesn't already exist
-if [ ! -d ".venv" ]; then
+if [ ! -d "venv" ]; then
   echo "Creating a virtual environment in venv..."
   python3 -m venv venv
   echo "Virtual environment created."
