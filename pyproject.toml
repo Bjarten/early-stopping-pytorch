@@ -15,12 +15,15 @@ dependencies = [
     "torch>=1.9.0"
 ]
 
+[tool.semantic_release]
+version_variable = "early_stopping_pytorch/__init__.py:__version__"
+branch = "main"
+upload_to_pypi = false
+build_command = "pip install build && python -m build"
+
 [tool.semantic_release.branches]
 main = {}
 "fix/release-workflow" = { prerelease = true }
-
-upload_to_pypi = false
-build_command = "pip install build && python -m build"
 
 [tool.semantic_release.git]
 tag_format = "v{version}"
