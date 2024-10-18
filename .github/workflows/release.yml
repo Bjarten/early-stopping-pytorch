@@ -2,16 +2,6 @@ name: Create New Release
 
 on:
   workflow_dispatch:
-    inputs:
-      dry-run:
-        description: |
-          Perform a dry run release (check for testing, uncheck for real release)
-          - Checked (true): Simulates the release process without making changes
-          - Unchecked (false): Creates an actual release with version bump
-          Note: Ensure all desired changes are merged to main before releasing
-        required: true
-        default: true
-        type: boolean
 
 jobs:
   release:
@@ -48,8 +38,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ github.event.inputs.dry-run }}" = "true" ]; then
-            semantic-release publish --dry-run --verbose
-          else
-            semantic-release publish --verbose
-          fi
+          semantic-release publish --log-level debug
