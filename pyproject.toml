@@ -17,17 +17,9 @@ dependencies = [
 
 [tool.semantic_release]
 version_variable = "early_stopping_pytorch/__init__.py:__version__"
+branch = "main"
 upload_to_pypi = false
 build_command = "pip install build && python -m build"
 
 [tool.semantic_release.git]
 tag_format = "v{version}"
-
-[tool.semantic_release.branches.main]
-match = "(main|master)"
-prerelease = false
-
-[tool.semantic_release.branches."fix/release-workflow"]
-match = "fix/release-workflow"
-prerelease = true
-prerelease_token = "beta"
