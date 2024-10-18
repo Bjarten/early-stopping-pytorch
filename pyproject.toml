@@ -17,8 +17,10 @@ dependencies = [
 
 [tool.semantic_release]
 version_variable = "early_stopping_pytorch/__init__.py:__version__"
-branch = "main"
-branches = ["main", "fix/release-workflow"]
+branches = [
+  { name = "main", channel = "latest" },
+  { name = "fix/release-workflow", prerelease = true }
+]
 upload_to_pypi = false
 build_command = "pip install build && python -m build"
 
