@@ -1,18 +1,17 @@
-name: Semantic Release
+name: Create New Release
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_dispatch:  # This ensures the workflow is only triggered manually
 
 jobs:
   release:
+    name: Create Release
     runs-on: ubuntu-latest
-    concurrency: release
     permissions:
-      id-token: write
       contents: write
+      issues: write
+      pull-requests: write
+      actions: write
 
     steps:
       - name: Checkout code
@@ -21,7 +20,6 @@ jobs:
           fetch-depth: 0
 
       - name: Python Semantic Release
-        id: release
         uses: python-semantic-release/python-semantic-release@v9.12.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
