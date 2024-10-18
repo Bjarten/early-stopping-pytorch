@@ -1,27 +1,18 @@
-name: Create New Release
+name: Semantic Release
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
-    inputs:
-      dry-run:
-        description: |
-          Perform a dry run release (check for testing, uncheck for real release)
-          - Checked (true): Simulates the release process without making changes
-          - Unchecked (false): Creates an actual release with version bump
-          Note: Ensure all desired changes are merged to main before releasing
-        required: true
-        default: true
-        type: boolean
 
 jobs:
   release:
-    name: Create Release
     runs-on: ubuntu-latest
+    concurrency: release
     permissions:
+      id-token: write
       contents: write
-      issues: write
-      pull-requests: write
-      actions: write
 
     steps:
       - name: Checkout code
@@ -29,27 +20,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Python Semantic Release
+        id: release
+        uses: python-semantic-release/python-semantic-release@v9.12.0
         with:
-          python-version: '3.12'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install python-semantic-release
-
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Run semantic-release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ "${{ github.event.inputs.dry-run }}" = "true" ]; then
-            semantic-release publish --dry-run --verbose
-          else
-            semantic-release publish --verbose
-          fi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
