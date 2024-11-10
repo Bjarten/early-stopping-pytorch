@@ -5,6 +5,25 @@
 
 ### Bug Fixes
 
+* fix: improve release process and documentation (#34)
+
+## Description
+This PR improves the release process and documentation by:
+1. Makes tag pushing explicit in the release workflow
+2. Fixes version management in semantic release
+3. Updates README with PyPI installation instructions
+
+## Changes
+- Added explicit tag pushing parameters to semantic-release workflow
+- Updated version management in pyproject.toml:
+  - Added version_toml configuration
+  - Changed from dynamic to static versioning
+  - Set version to match current release (1.0.1)
+- Updated README.md:
+  - Added PyPI installation instructions
+  - Fixed image URL for PyPI compatibility
+  - Reorganized installation and usage sections ([`f42d5d1`](https://github.com/Bjarten/early-stopping-pytorch/commit/f42d5d1dfa092dac5d33835e7b6d3092783baf53))
+
 * fix: use PyPI trusted publisher authentication (#33)
 
 Updates the GitHub Actions publish workflow to use PyPI's Trusted
