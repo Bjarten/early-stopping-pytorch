@@ -1,6 +1,26 @@
 # CHANGELOG
 
 
+## v1.0.1 (2024-11-10)
+
+### Bug Fixes
+
+* fix: use PyPI trusted publisher authentication (#33)
+
+Updates the GitHub Actions publish workflow to use PyPI's Trusted
+Publisher authentication instead of token-based authentication. This
+change improves security by:
+- Removing the need to store PyPI tokens in GitHub secrets
+- Using OpenID Connect (OIDC) for secure authentication
+- Leveraging PyPI's recommended authentication method for GitHub Actions
+
+## Changes
+- Removed token-based authentication (TWINE_USERNAME and TWINE_PASSWORD)
+- Added required `id-token: write` permission for OIDC
+- Switched from manual twine upload to `pypa/gh-action-pypi-publish`
+action ([`3a0d9b8`](https://github.com/Bjarten/early-stopping-pytorch/commit/3a0d9b8ed0ac95f8ee4010368319be2f8c38da61))
+
+
 ## v1.0.0 (2024-10-18)
 
 ### Breaking
