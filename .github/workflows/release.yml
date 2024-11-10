@@ -23,3 +23,7 @@ jobs:
         uses: python-semantic-release/python-semantic-release@v9.12.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_format: "v{version}"
+          commit: true
+          push: true
+          tag: true

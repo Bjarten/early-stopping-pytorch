@@ -3,9 +3,17 @@ Early stopping is a form of regularization used to avoid overfitting on the trai
 
 Underneath is a plot from the example notebook, which shows the last checkpoint made by the EarlyStopping object, right before the model started to overfit. It had patience set to 20.
 
-![Loss plot](loss_plot.png?raw=true)
+![Loss Plot](https://raw.githubusercontent.com/Bjarten/early-stopping-pytorch/main/loss_plot.png)
 
-## Usage
+## Installation
+
+### Option 1: Install from PyPI (Recommended)
+```bash
+pip install early-stopping-pytorch
+```
+
+### Option 2: Install from Source
+For development or if you want the latest unreleased changes:
 
 ### 1. Clone the Repository
 ```bash
@@ -31,10 +39,27 @@ Install the package locally in editable mode so you can use it immediately:
 pip install -e .
 ```
 
-### 5. Use the Package
-You can now import and use the package in your Python code:
+## Usage
+
 ```python
 from early_stopping_pytorch import EarlyStopping
+
+# Initialize early stopping object
+early_stopping = EarlyStopping(patience=7, verbose=True)
+
+# In your training loop:
+for epoch in range(num_epochs):
+    # ... training code ...
+    val_loss = ... # calculate validation loss
+
+    # Early stopping call
+    early_stopping(val_loss, model)
+    if early_stopping.early_stop:
+        print("Early stopping triggered")
+        break
 ```
+
+For a complete example, see the [MNIST Early Stopping Example Notebook](MNIST_Early_Stopping_example.ipynb).
+
 ## References
 The ```EarlyStopping``` class in ```early_stopping_pytorch/early_stopping.py``` is inspired by the [ignite EarlyStopping class](https://github.com/pytorch/ignite/blob/master/ignite/handlers/early_stopping.py).
