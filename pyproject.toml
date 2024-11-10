@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "early-stopping-pytorch"
-dynamic = ["version"]
+version = "1.0.1"
 description = "A PyTorch utility package for Early Stopping"
 readme = "README.md"
 authors = [
@@ -16,11 +16,9 @@ dependencies = [
     "torch>=1.9.0"
 ]
 
-[tool.setuptools.dynamic]
-version = {attr = "early_stopping_pytorch.__version__"}
-
 [tool.semantic_release]
 version_variable = ["early_stopping_pytorch/__init__.py:__version__"]
+version_toml = ["pyproject.toml:project.version"]  # Add this line
 branch = "main"
 upload_to_pypi = false
 build_command = "pip install build && python -m build"
