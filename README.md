@@ -36,25 +36,5 @@ You can now import and use the package in your Python code:
 ```python
 from early_stopping_pytorch import EarlyStopping
 ```
-
----
-
-### Summary of Commands
-
-1. Clone the repository:
-   `git clone https://github.com/your_username/early-stopping-pytorch.git`
-
-2. Set up the environment:
-   `./setup_dev_env.sh`
-
-3. Activate the environment:
-   `source dev-venv/bin/activate`
-
-4. Install the package in editable mode:
-   `pip install -e .`
-
-5. Optional: Build the package for distribution:
-   `./build.sh`
-
 ## References
 The ```EarlyStopping``` class in ```early_stopping_pytorch/early_stopping.py``` is inspired by the [ignite EarlyStopping class](https://github.com/pytorch/ignite/blob/master/ignite/handlers/early_stopping.py).
