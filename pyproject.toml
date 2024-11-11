@@ -16,8 +16,18 @@ dependencies = [
     "torch>=1.9.0"
 ]
 
+[project.urls]
+Repository = "https://github.com/Bjarten/early-stopping-pytorch"
+
 [tool.semantic_release]
-version_variables = ["early_stopping_pytorch/__init__.py:__version__"]
+version_variables = [
+    "early_stopping_pytorch/__init__.py:__version__",
+    "README.md:version_note"
+]
+version_pattern = '''
+    (?P<variable>__version__\s*=\s*['"](?P<version>[^'"]+)['"]) |
+    (?P<variable>note\s*=\s*\{Version\s(?P<version>[^}]+)\})
+'''
 tag_format = "v{version}"
 version_toml = ["pyproject.toml:project.version"]
 branch = "main"
