@@ -67,7 +67,7 @@ If you find this package useful in your research, please consider citing it as:
 
 ```bibtex
 @misc{early_stopping_pytorch,
-  author = {Bjarte Sunde},
+  author = {Bjarte Mehus Sunde},
   title = {early-stopping-pytorch: A PyTorch utility package for Early Stopping},
   year = {2024},
   url = {https://github.com/Bjarten/early-stopping-pytorch},

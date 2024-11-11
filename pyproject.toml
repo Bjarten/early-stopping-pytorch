@@ -8,7 +8,7 @@ version = "1.0.9"
 description = "A PyTorch utility package for Early Stopping"
 readme = "README.md"
 authors = [
-    { name = "Bjarte Sunde", email = "BjarteSunde@outlook.com" }
+    { name = "Bjarte Mehus Sunde", email = "BjarteSunde@outlook.com" }
 ]
 license = { text = "MIT" }
 dependencies = [
