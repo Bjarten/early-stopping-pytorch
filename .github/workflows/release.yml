@@ -27,4 +27,4 @@ jobs:
           commit: true
           push: true
           tag: true
-          version: true 
+          version: true
