@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.0.8 (2024-11-11)
+
+### Bug Fixes
+
+* fix: trigger version bump (#41) ([`2c72682`](https://github.com/Bjarten/early-stopping-pytorch/commit/2c726827b507410e08ea1c08c3342915d92f7899))
+
+### Chores
+
+* chore: update project metadata and README for citation and versioning (#40) ([`6834653`](https://github.com/Bjarten/early-stopping-pytorch/commit/68346536b22171c6820b95886a8b6d527a426805))
+
+
 ## v1.0.7 (2024-11-11)
 
 ### Bug Fixes
