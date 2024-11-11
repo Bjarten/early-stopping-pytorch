@@ -1,6 +1,40 @@
 # CHANGELOG
 
 
+## v1.0.2 (2024-11-11)
+
+### Bug Fixes
+
+* fix: manual release and publish workflows with version updates (#35)
+
+## Description
+This PR updates both the release and publish workflows to:
+1. Ensure proper version updating across all package files
+2. Use manual triggers for better control and reliability
+
+## Changes
+
+### Release Workflow Updates
+- Added `version: true` parameter to semantic-release action
+- This ensures updates to both `__init__.py` and `pyproject.toml`
+versions
+- Kept explicit tag and push parameters for clarity
+- Maintained all necessary permissions
+
+### Publish Workflow Updates
+- Changed from tag-based trigger to manual `workflow_dispatch`
+- Simplified workflow control and verification process
+- Maintained all PyPI trusted publisher configurations
+
+## Process After Changes
+1. Manual trigger of "Create New Release" workflow:
+   - Updates versions in package files
+   - Creates new tag and GitHub release
+2. Manual trigger of "Publish Python Package" workflow:
+   - Builds package with updated versions
+   - Publishes to PyPI ([`45de9bb`](https://github.com/Bjarten/early-stopping-pytorch/commit/45de9bb72e15295ff47c1896c01fd53218990d77))
+
+
 ## v1.0.1 (2024-11-10)
 
 ### Bug Fixes
