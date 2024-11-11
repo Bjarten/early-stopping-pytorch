@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "early-stopping-pytorch"
-version = "1.0.6"
+version = "1.0.5"
 description = "A PyTorch utility package for Early Stopping"
 readme = "README.md"
 authors = [
