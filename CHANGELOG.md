@@ -1,6 +1,26 @@
 # CHANGELOG
 
 
+## v1.0.7 (2024-11-11)
+
+### Bug Fixes
+
+* fix: correct versioning for __version__ in __init__.py (#39) ([`bdb4545`](https://github.com/Bjarten/early-stopping-pytorch/commit/bdb4545c13e46c601d185510d52d0c724fc77b24))
+
+### Unknown
+
+* Revert "1.0.6"
+
+This reverts commit 9244ca36814ae4a331b6477cb08edc0a91fc2609. ([`c96c7df`](https://github.com/Bjarten/early-stopping-pytorch/commit/c96c7df3fa834103ebd71726533d657700fb14f0))
+
+
+## v1.0.6 (2024-11-11)
+
+### Bug Fixes
+
+* fix: manual version bump ([`0ea0305`](https://github.com/Bjarten/early-stopping-pytorch/commit/0ea0305703a6b949438d78fa47b27cf63eb27009))
+
+
 ## v1.0.5 (2024-11-11)
 
 ### Bug Fixes
