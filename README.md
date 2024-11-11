@@ -61,5 +61,19 @@ for epoch in range(num_epochs):
 
 For a complete example, see the [MNIST Early Stopping Example Notebook](MNIST_Early_Stopping_example.ipynb).
 
+## Citation
+
+If you find this package useful in your research, please consider citing it as:
+
+```bibtex
+@misc{early_stopping_pytorch,
+  author = {Bjarte Sunde},
+  title = {early-stopping-pytorch: A PyTorch utility package for Early Stopping},
+  year = {2024},
+  url = {https://github.com/Bjarten/early-stopping-pytorch},
+  note = {Version 1.0.7}
+}
+```
+
 ## References
 The ```EarlyStopping``` class in ```early_stopping_pytorch/early_stopping.py``` is inspired by the [ignite EarlyStopping class](https://github.com/pytorch/ignite/blob/master/ignite/handlers/early_stopping.py).
