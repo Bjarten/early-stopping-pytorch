@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.0.4 (2024-11-11)
+
+### Bug Fixes
+
+* fix: correct version regex in semantic release config for version updates (#37) ([`a3a82b2`](https://github.com/Bjarten/early-stopping-pytorch/commit/a3a82b2f11a82caa13c50c5e07086cd2e74699b1))
+
+
 ## v1.0.3 (2024-11-11)
 
 ### Bug Fixes
