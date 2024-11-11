@@ -1,30 +1,37 @@
 # CHANGELOG
 
 
+## v1.0.6 (2024-11-11)
+
+### Fixes
+
+* fix: manual version bump ([`0ea0305`](https://github.com/Bjarten/early-stopping-pytorch/commit/0ea0305703a6b949438d78fa47b27cf63eb27009))
+
+
 ## v1.0.5 (2024-11-11)
 
-### Bug Fixes
+### Fixes
 
 * fix: Update semantic-release configuration for consistency and correct versioning (#38) ([`0faabd0`](https://github.com/Bjarten/early-stopping-pytorch/commit/0faabd091ba9661c2fd8419e8332d9cb8dcdef60))
 
 
 ## v1.0.4 (2024-11-11)
 
-### Bug Fixes
+### Fixes
 
 * fix: correct version regex in semantic release config for version updates (#37) ([`a3a82b2`](https://github.com/Bjarten/early-stopping-pytorch/commit/a3a82b2f11a82caa13c50c5e07086cd2e74699b1))
 
 
 ## v1.0.3 (2024-11-11)
 
-### Bug Fixes
+### Fixes
 
 * fix: semantic release version updating pattern (#36) ([`ccda0f5`](https://github.com/Bjarten/early-stopping-pytorch/commit/ccda0f52ce6fa2298be7d46f49e0315933ff4800))
 
 
 ## v1.0.2 (2024-11-11)
 
-### Bug Fixes
+### Fixes
 
 * fix: manual release and publish workflows with version updates (#35)
 
@@ -58,7 +65,7 @@ versions
 
 ## v1.0.1 (2024-11-10)
 
-### Bug Fixes
+### Fixes
 
 * fix: improve release process and documentation (#34)
 
@@ -137,56 +144,6 @@ from:
 - New versions will be automatically published to PyPI when a new tag is
 pushed, using the API token for authentication. ([`f9522dd`](https://github.com/Bjarten/early-stopping-pytorch/commit/f9522dd2da7d14e3dce18eebcbb867260ffdcde4))
 
-### Bug Fixes
-
-* fix: release workflow 2 (#32)
-
-This PR modifies our Semantic Release workflow to ensure it's only
-triggered manually:
-
-1. Removed automatic trigger on push to main branch
-2. Retained only the `workflow_dispatch` trigger
-3. Simplified job structure while maintaining all necessary steps and
-permissions
-
-These changes provide more control over when releases are created,
-allowing us to:
-- Prevent unintended automatic releases
-- Manually initiate the release process when desired
-- Maintain full functionality of the Semantic Release process ([`ddc6493`](https://github.com/Bjarten/early-stopping-pytorch/commit/ddc6493075be8b2184956eb73ba621666df715b4))
-
-* fix: release workflow (#31)
-
-This PR updates our Semantic Release workflow to align with best
-practices and official documentation. Key changes include:
-
-1. Simplified the workflow to use the official Python Semantic Release
-GitHub Action.
-2. Adjusted permissions to ensure proper access for creating releases
-and tags.
-3. Updated pyproject.toml to prevent double publishing to PyPI.
-
-These changes aim to:
-- Streamline our release process
-- Improve reliability and consistency of our versioning ([`b291782`](https://github.com/Bjarten/early-stopping-pytorch/commit/b291782635bbb605fcd784778fa7bb8b16b02488))
-
-* fix: add check for NaN validation loss in EarlyStopping (#28)
-
-This PR addresses an issue where `EarlyStopping` incorrectly treats
-`nan` validation losses as an improvement, often caused by exploding
-gradients.
-
-Key changes:
-- Added `np.isnan(val_loss)` check to ensure that `nan` validation
-losses are ignored.
-- Updated the logic to ensure that the patience counter and model
-checkpointing are unaffected by `nan` values.
-- Introduced a new unit test, `test_validation_loss_nan`, to verify that
-`EarlyStopping` behaves correctly when `nan` values are encountered
-during training.
-
-Closes #16 ([`676686b`](https://github.com/Bjarten/early-stopping-pytorch/commit/676686b2b489d99fa5fd8b87ec9594a4e751e323))
-
 ### Chores
 
 * chore: consolidate version definitions and update release workflow (#30)
@@ -264,25 +221,58 @@ added unit tests.
 - Improves development velocity by automatically running tests on every
 push and pull request. ([`ffe12ee`](https://github.com/Bjarten/early-stopping-pytorch/commit/ffe12ee1edc3700ea3f06a2dcd36793667db2b7e))
 
+### Fixes
+
+* fix: release workflow 2 (#32)
+
+This PR modifies our Semantic Release workflow to ensure it's only
+triggered manually:
+
+1. Removed automatic trigger on push to main branch
+2. Retained only the `workflow_dispatch` trigger
+3. Simplified job structure while maintaining all necessary steps and
+permissions
+
+These changes provide more control over when releases are created,
+allowing us to:
+- Prevent unintended automatic releases
+- Manually initiate the release process when desired
+- Maintain full functionality of the Semantic Release process ([`ddc6493`](https://github.com/Bjarten/early-stopping-pytorch/commit/ddc6493075be8b2184956eb73ba621666df715b4))
+
+* fix: release workflow (#31)
+
+This PR updates our Semantic Release workflow to align with best
+practices and official documentation. Key changes include:
+
+1. Simplified the workflow to use the official Python Semantic Release
+GitHub Action.
+2. Adjusted permissions to ensure proper access for creating releases
+and tags.
+3. Updated pyproject.toml to prevent double publishing to PyPI.
+
+These changes aim to:
+- Streamline our release process
+- Improve reliability and consistency of our versioning ([`b291782`](https://github.com/Bjarten/early-stopping-pytorch/commit/b291782635bbb605fcd784778fa7bb8b16b02488))
+
+* fix: add check for NaN validation loss in EarlyStopping (#28)
+
+This PR addresses an issue where `EarlyStopping` incorrectly treats
+`nan` validation losses as an improvement, often caused by exploding
+gradients.
+
+Key changes:
+- Added `np.isnan(val_loss)` check to ensure that `nan` validation
+losses are ignored.
+- Updated the logic to ensure that the patience counter and model
+checkpointing are unaffected by `nan` values.
+- Introduced a new unit test, `test_validation_loss_nan`, to verify that
+`EarlyStopping` behaves correctly when `nan` values are encountered
+during training.
+
+Closes #16 ([`676686b`](https://github.com/Bjarten/early-stopping-pytorch/commit/676686b2b489d99fa5fd8b87ec9594a4e751e323))
+
 
 ## v0.1.0 (2024-10-14)
-
-### Bug Fixes
-
-* fix: wrong sign on delta argument
-
-elif score < self.best_score - self.delta: -> elif score < self.best_score + self.delta: ([`7d8a086`](https://github.com/Bjarten/early-stopping-pytorch/commit/7d8a086c4e43e4db05fd850361224fab275fdc6b))
-
-* fix: remove pytorch 
-
-Seems like only torchvision is required ([`8644d65`](https://github.com/Bjarten/early-stopping-pytorch/commit/8644d657b31857335502e94d0d756f1704f476e7))
-
-* fix: remove version numbers
-
-Could not find a version error on https://mybinder.org/
-Try to fix the error by removing version numbers ([`8029865`](https://github.com/Bjarten/early-stopping-pytorch/commit/802986590a40b4cba7e4228cffef8eb914acbea2))
-
-* fix: format file for use with mybinder.org ([`a144aff`](https://github.com/Bjarten/early-stopping-pytorch/commit/a144aff271a743864aa43304b9a847e94a4e7f3d))
 
 ### Chores
 
@@ -403,6 +393,23 @@ Notebook with an example of how to use the EarlyStopping class ([`5102fa5`](http
 * feat: add EarlyStopping class ([`9c7d9e6`](https://github.com/Bjarten/early-stopping-pytorch/commit/9c7d9e6139975d827aee1b0e4f99b758d4076e27))
 
 * feat: create pytorchtools.py ([`7396b39`](https://github.com/Bjarten/early-stopping-pytorch/commit/7396b39d6a5505ecc93c9a78cedf454bd2bc2546))
+
+### Fixes
+
+* fix: wrong sign on delta argument
+
+elif score < self.best_score - self.delta: -> elif score < self.best_score + self.delta: ([`7d8a086`](https://github.com/Bjarten/early-stopping-pytorch/commit/7d8a086c4e43e4db05fd850361224fab275fdc6b))
+
+* fix: remove pytorch 
+
+Seems like only torchvision is required ([`8644d65`](https://github.com/Bjarten/early-stopping-pytorch/commit/8644d657b31857335502e94d0d756f1704f476e7))
+
+* fix: remove version numbers
+
+Could not find a version error on https://mybinder.org/
+Try to fix the error by removing version numbers ([`8029865`](https://github.com/Bjarten/early-stopping-pytorch/commit/802986590a40b4cba7e4228cffef8eb914acbea2))
+
+* fix: format file for use with mybinder.org ([`a144aff`](https://github.com/Bjarten/early-stopping-pytorch/commit/a144aff271a743864aa43304b9a847e94a4e7f3d))
 
 ### Unknown
 
