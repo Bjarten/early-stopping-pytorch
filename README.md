@@ -71,7 +71,6 @@ If you find this package useful in your research, please consider citing it as:
   title = {early-stopping-pytorch: A PyTorch utility package for Early Stopping},
   year = {2024},
   url = {https://github.com/Bjarten/early-stopping-pytorch},
-  note = {Version 1.0.7}
 }
 ```
 
