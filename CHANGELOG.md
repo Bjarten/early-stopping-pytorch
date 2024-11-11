@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.0.9 (2024-11-11)
+
+### Bug Fixes
+
+* fix: simplify build configuration and update citation format (#42) ([`0839e21`](https://github.com/Bjarten/early-stopping-pytorch/commit/0839e2139ab4fe23160619b59cbf87db369c8044))
+
+
 ## v1.0.8 (2024-11-11)
 
 ### Bug Fixes
