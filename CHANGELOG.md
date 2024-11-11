@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.0.5 (2024-11-11)
+
+### Bug Fixes
+
+* fix: Update semantic-release configuration for consistency and correct versioning (#38) ([`0faabd0`](https://github.com/Bjarten/early-stopping-pytorch/commit/0faabd091ba9661c2fd8419e8332d9cb8dcdef60))
+
+
 ## v1.0.4 (2024-11-11)
 
 ### Bug Fixes
