@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.0.10 (2024-11-11)
+
+### Bug Fixes
+
+* fix: update citation author to full name (#43) ([`4b0e88d`](https://github.com/Bjarten/early-stopping-pytorch/commit/4b0e88d5a47beb2a9f2ba8a536b996f82b4fd14d))
+
+
 ## v1.0.9 (2024-11-11)
 
 ### Bug Fixes
