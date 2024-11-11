@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v1.0.3 (2024-11-11)
+
+### Bug Fixes
+
+* fix: semantic release version updating pattern (#36) ([`ccda0f5`](https://github.com/Bjarten/early-stopping-pytorch/commit/ccda0f52ce6fa2298be7d46f49e0315933ff4800))
+
+
 ## v1.0.2 (2024-11-11)
 
 ### Bug Fixes
