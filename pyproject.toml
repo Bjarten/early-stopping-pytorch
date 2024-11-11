@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [tool.semantic_release]
-version_variable = "early_stopping_pytorch/__init__.py:__version__"
+version_variables = ["early_stopping_pytorch/__init__.py:__version__"]
 tag_format = "v{version}"
 version_toml = ["pyproject.toml:project.version"]
 branch = "main"
